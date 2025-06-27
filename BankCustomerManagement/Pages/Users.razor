@@ -1,0 +1,454 @@
+﻿@page "/users"
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+<h1 class="page-title animate__animated animate__fadeIn">Customer Management</h1>
+
+<!-- Toast Notification -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="actionToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
+        <div class="toast-header @toastHeaderClass">
+            <strong class="me-auto">Notification</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@toastMessage</div>
+    </div>
+</div>
+
+<!-- Add New Customer Button -->
+<div class="mb-3">
+    <button class="btn btn-primary vibrant-btn" @onclick="StartAddNewUser">Add New Customer</button>
+</div>
+
+@if (showForm)
+{
+    <div class="multistep-container card p-4 animate__animated animate__fadeIn">
+        <EditForm Model="@formUser" OnValidSubmit="@HandleSubmit" @ref="editForm">
+            <DataAnnotationsValidator />
+            <!-- Progress Bar -->
+            <!-- Custom Progress Bar -->
+            <div class="custom-progressbar mb-4 d-flex justify-content-between">
+                <div class="step @(currentStep >= 1 ? "active" : "")" @onclick="() => SetStep(1)" style="cursor:pointer">
+                    <div class="circle">
+                        <img src="icons/PerosonalInformation.png" alt="Passenger" />
+                    </div>
+                    <div class="label">Personal Info</div>
+                </div>
+                <div class="arrow"><i class="bi bi-arrow-right"></i></div>
+                <div class="step @(currentStep >= 2 ? "active" : "")" @onclick="() => SetStep(2)" style="cursor:pointer">
+                    <div class="circle">
+                        <img src="icons/address.png" alt="Address" />
+                    </div>
+                    <div class="label">Address</div>
+                </div>
+                <div class="arrow"><i class="bi bi-arrow-right"></i></div>
+                <div class="step @(currentStep >= 3 ? "active" : "")" @onclick="() => SetStep(3)" style="cursor:pointer">
+                    <div class="circle">
+                        <img src="icons/bank.png" alt="Bank" />
+                    </div>
+                    <div class="label">Bank</div>
+                </div>
+                <div class="arrow"><i class="bi bi-arrow-right"></i></div>
+                <div class="step @(currentStep >= 4 ? "active" : "")" @onclick="() => SetStep(4)" style="cursor:pointer">
+                    <div class="circle">
+                        <img src="icons/company.png" alt="Company" />
+                    </div>
+                    <div class="label">Company</div>
+                </div>
+            </div>
+
+
+
+          
+
+            @if (currentStep == 1)
+            {
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label>First Name</label>
+                        <InputText class="form-control" @bind-Value="formUser.FirstName" />
+                        <ValidationMessage For="@(() => formUser.FirstName)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Last Name</label>
+                        <InputText class="form-control" @bind-Value="formUser.LastName" />
+                        <ValidationMessage For="@(() => formUser.LastName)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <InputText class="form-control" @bind-Value="formUser.Email" />
+                        <ValidationMessage For="@(() => formUser.Email)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone</label>
+                        <InputText class="form-control" @bind-Value="formUser.Phone" />
+                    </div>
+                </div>
+            }
+            else if (currentStep == 2)
+            {
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label>Address Line</label>
+                        <InputText class="form-control" @bind-Value="formUser.Address.AddressLine" />
+                        <ValidationMessage For="@(() => formUser.Address.AddressLine)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>City</label>
+                        <InputText class="form-control" @bind-Value="formUser.Address.City" />
+                        <ValidationMessage For="@(() => formUser.Address.City)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Postal Code</label>
+                        <InputText class="form-control" @bind-Value="formUser.Address.PostalCode" />
+                        <ValidationMessage For="@(() => formUser.Address.PostalCode)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>State</label>
+                        <InputText class="form-control" @bind-Value="formUser.Address.State" />
+                        <ValidationMessage For="@(() => formUser.Address.State)" />
+                    </div>
+                </div>
+            }
+            else if (currentStep == 3)
+            {
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label>Card Number</label>
+                        <InputText class="form-control" @bind-Value="formUser.Bank.CardNumber" />
+                        <ValidationMessage For="@(() => formUser.Bank.CardNumber)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Card Type</label>
+                        <InputText class="form-control" @bind-Value="formUser.Bank.CardType" />
+                        <ValidationMessage For="@(() => formUser.Bank.CardType)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Currency</label>
+                        <InputText class="form-control" @bind-Value="formUser.Bank.Currency" />
+                        <ValidationMessage For="@(() => formUser.Bank.Currency)" />
+                    </div>
+                </div>
+            }
+            else if (currentStep == 4)
+            {
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label>Company Name</label>
+                        <InputText class="form-control" @bind-Value="formUser.Company.Name" />
+                        <ValidationMessage For="@(() => formUser.Company.Name)" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Title</label>
+                        <InputText class="form-control" @bind-Value="formUser.Company.Title" />
+                        <ValidationMessage For="@(() => formUser.Company.Title)" />
+                    </div>
+                </div>
+            }
+
+            <div class="d-flex justify-content-between mt-4">
+                @if (currentStep > 1)
+                {
+                    <button type="button" class="btn btn-secondary" @onclick="PreviousStep">Back</button>
+                }
+                <div class="text-end">
+                    @if (currentStep < 4)
+                    {
+                        <button type="button" class="btn btn-primary" @onclick="NextStep">Continue</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    }
+                </div>
+            </div>
+        </EditForm>
+    </div>
+}
+
+<!-- User List -->
+<div class="card shadow-sm animate__animated animate__fadeInUp">
+    <div class="card-header gradient-light">
+        <h5 class="card-title mb-0">Customers</h5>
+    </div>
+    <div class="card-body">
+        @if (users == null)
+        {
+            <div class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>Loading customers...</p>
+            </div>
+        }
+        else if (!users.Any())
+        {
+            <p class="text-muted">No users found.</p>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover vibrant-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in users)
+                        {
+                            <tr class="animate__animated animate__fadeIn">
+                                <td>@user.Id</td>
+                                <td>@user.FirstName</td>
+                                <td>@user.LastName</td>
+                                <td>@user.Email</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary vibrant-btn" @onclick="() => EditUser(user)">Edit</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<User> users = new();
+    private User formUser = new() { Address = new Address(), Bank = new Bank(), Company = new Company() };
+    private int currentStep = 1;
+    private bool isEditing = false;
+    private bool showForm = false;
+    private string toastMessage = "";
+    private string toastHeaderClass = "";
+    private EditForm editForm;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchUsers();
+    }
+
+    private async Task FetchUsers()
+    {
+        try
+        {
+            var response = await Http.GetFromJsonAsync<UserResponse>("https://dummyjson.com/users");
+            users = response?.Users ?? new List<User>();
+        }
+        catch (Exception ex)
+        {
+            toastMessage = $"Error fetching users: {ex.Message}";
+            toastHeaderClass = "bg-danger text-white";
+            await ShowToast();
+        }
+    }
+
+    private void StartAddNewUser()
+    {
+        formUser = new User { Address = new Address(), Bank = new Bank(), Company = new Company() };
+        currentStep = 1;
+        isEditing = false;
+        showForm = true;
+    }
+
+    private void EditUser(User user)
+    {
+        formUser = new User
+        {
+            Id = user.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email,
+            Phone = user.Phone,
+            Address = new Address
+            {
+                AddressLine = user.Address.AddressLine,
+                City = user.Address.City,
+                PostalCode = user.Address.PostalCode,
+                State = user.Address.State
+            },
+            Bank = new Bank
+            {
+                CardNumber = user.Bank.CardNumber,
+                CardType = user.Bank.CardType,
+                Currency = user.Bank.Currency
+            },
+            Company = new Company
+            {
+                Name = user.Company.Name,
+                Title = user.Company.Title
+            }
+        };
+        currentStep = 1;
+        isEditing = true;
+        showForm = true;
+    }
+
+    private void CancelEdit()
+    {
+        formUser = new User { Address = new Address(), Bank = new Bank(), Company = new Company() };
+        currentStep = 1;
+        isEditing = false;
+        showForm = false;
+    }
+
+    private bool IsPreviousStepsValid(int step)
+    {
+        for (int i = 1; i < step; i++)
+        {
+            if (!IsStepValid(i))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private bool IsStepValid(int step)
+    {
+        var editContext = editForm?.EditContext;
+        if (editContext == null) return false;
+
+        var fields = stepFields[step];
+        foreach (var field in fields)
+        {
+            var fieldIdentifier = new FieldIdentifier(formUser, field);
+            var messages = editContext.GetValidationMessages(fieldIdentifier);
+            if (messages.Any())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void SetStep(int step)
+    {
+        if (IsPreviousStepsValid(step))
+        {
+            currentStep = step;
+        }
+    }
+
+    private void NextStep()
+    {
+        if (IsStepValid(currentStep) && currentStep < 4)
+        {
+            currentStep++;
+        }
+        else if (!IsStepValid(currentStep))
+        {
+            toastMessage = "Please complete the current step.";
+            toastHeaderClass = "bg-danger text-white";
+            _ = ShowToast();
+        }
+    }
+
+    private void PreviousStep()
+    {
+        if (currentStep > 1)
+        {
+            currentStep--;
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (isEditing)
+        {
+            var existingUser = users.FirstOrDefault(u => u.Id == formUser.Id);
+            if (existingUser != null)
+            {
+                existingUser.FirstName = formUser.FirstName;
+                existingUser.LastName = formUser.LastName;
+                existingUser.Email = formUser.Email;
+                existingUser.Phone = formUser.Phone;
+                existingUser.Address = formUser.Address;
+                existingUser.Bank = formUser.Bank;
+                existingUser.Company = formUser.Company;
+                toastMessage = $"User {formUser.FirstName} {formUser.LastName} updated successfully!";
+            }
+        }
+        else
+        {
+            formUser.Id = users.Any() ? users.Max(u => u.Id) + 1 : 1;
+            users.Add(formUser);
+            toastMessage = $"User {formUser.FirstName} {formUser.LastName} added successfully!";
+        }
+        toastHeaderClass = "bg-success text-white";
+        await ShowToast();
+        CancelEdit();
+    }
+
+    private async Task ShowToast()
+    {
+        await JS.InvokeVoidAsync("showToast");
+    }
+
+    private Dictionary<int, string[]> stepFields = new()
+    {
+        {1, new[] {"FirstName", "LastName", "Email", "Phone"}},
+        {2, new[] {"Address.AddressLine", "Address.City", "Address.PostalCode", "Address.State"}},
+        {3, new[] {"Bank.CardNumber", "Bank.CardType", "Bank.Currency"}},
+        {4, new[] {"Company.Name", "Company.Title"}}
+    };
+
+    public class User
+    {
+        public int Id { get; set; }
+        [Required(ErrorMessage = "First Name is required")]
+        public string FirstName { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Last Name is required")]
+        public string LastName { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Email is required"), EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
+        public Address Address { get; set; } = new();
+        public Bank Bank { get; set; } = new();
+        public Company Company { get; set; } = new();
+    }
+
+    public class Address
+    {
+        [Required(ErrorMessage = "Address Line is required")]
+        public string AddressLine { get; set; } = string.Empty;
+        [Required(ErrorMessage = "City is required")]
+        public string City { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Postal Code is required")]
+        public string PostalCode { get; set; } = string.Empty;
+        [Required(ErrorMessage = "State is required")]
+        public string State { get; set; } = string.Empty;
+    }
+
+    public class Bank
+    {
+        [Required(ErrorMessage = "Card Number is required")]
+        public string CardNumber { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Card Type is required")]
+        public string CardType { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Currency is required")]
+        public string Currency { get; set; } = string.Empty;
+    }
+
+    public class Company
+    {
+        [Required(ErrorMessage = "Company Name is required")]
+        public string Name { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Title is required")]
+        public string Title { get; set; } = string.Empty;
+    }
+
+    public class UserResponse
+    {
+        public List<User> Users { get; set; } = new();
+    }
+}
