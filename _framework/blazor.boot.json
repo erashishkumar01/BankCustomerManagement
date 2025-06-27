@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BankCustomerManagement",
   "resources": {
-    "hash": "sha256-zIuh4zTYxGcZBONa54sMBzbar7a63SJ2Lecdp/mVmzQ=",
+    "hash": "sha256-tDBLAtjQAA/VMewCuHaMkiN2pljYyY4uMgg9EbuQ48o=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.bw3ghk1ya5.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Forms.dpg94b5lde.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
@@ -46,7 +46,7 @@
       "System.Text.RegularExpressions.3zydt3n8n9.wasm": "System.Text.RegularExpressions.wasm",
       "System.cunp5qiwjj.wasm": "System.wasm",
       "System.Private.CoreLib.uypcs7aa1j.wasm": "System.Private.CoreLib.wasm",
-      "BankCustomerManagement.x0rorxxe99.wasm": "BankCustomerManagement.wasm",
+      "BankCustomerManagement.mhob7mx2c4.wasm": "BankCustomerManagement.wasm",
       "dotnet.native.qqumt3dtyr.js": "dotnet.native.js",
       "dotnet.native.lf87ukbqa9.wasm": "dotnet.native.wasm",
       "dotnet.js": "dotnet.js",
@@ -115,7 +115,7 @@
       "System.Text.Json.p14ptty3dt.wasm": "sha256-Q26WpVbrsJa+pSRoBmgcN+civhY+nI5bdEVG7wKZ5n8=",
       "System.Text.RegularExpressions.3zydt3n8n9.wasm": "sha256-sXTH9c57ccmOHrE+Bpsiewg0xWGtHrbl8KBKpTJW9VA=",
       "System.cunp5qiwjj.wasm": "sha256-DM5iEENhrifGKn33Y7cqRzxC0OtHXYOKO13icwIazj8=",
-      "BankCustomerManagement.x0rorxxe99.wasm": "sha256-0U36SmWIsClMwJOsfYwIiR5/6avMJekJng/nL90iIdo="
+      "BankCustomerManagement.mhob7mx2c4.wasm": "sha256-ul9/YQCwKiA+p+oeZWDF4nUc65rcVJccgObP3qyDs0A="
     }
   },
   "cacheBootResources": true,
