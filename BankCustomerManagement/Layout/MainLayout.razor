@@ -1,16 +1,45 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
+@inject IJSRuntime JS
+
+<div class="d-flex min-vh-100">
+    <!-- Sidebar (fixed width) -->
+    <div style="width: 240px; flex-shrink: 0;">
         <NavMenu />
     </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+    <!-- Main content (fills remaining space) -->
+    <div class="flex-grow-1 bg-light">
+        <header class="d-flex flex-wrap align-items-center p-3 border-bottom bg-gradient shadow">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-outline-secondary me-2 d-md-none sidebar-toggle" @onclick="ToggleSidebar" aria-label="Toggle sidebar">
+                    <i class="bi bi-list"></i>
+                </button>
+                <i class="bi bi-bank2 header-icon me-2" aria-label="Bank icon"></i>
+                <h4 class="header-title mb-0">Bank Customer Management</h4>
+            </div>
+            <nav class="header-nav ms-auto">
+                <a class="btn btn-outline-primary btn-sm" href="/" aria-label="Go to home page">
+                    <i class="bi bi-house me-1" aria-hidden="true"></i> Home
+                </a>
+                <a class="btn btn-outline-primary btn-sm" href="/users" aria-label="Go to users page">
+                    <i class="bi bi-people me-1" aria-hidden="true"></i> Users
+                </a>
+                <a class="btn btn-outline-info btn-sm" href="https://learn.microsoft.com/aspnet/core/" target="_blank" aria-label="Learn more about ASP.NET Core">
+                    <i class="bi bi-info-circle me-1" aria-hidden="true"></i> About
+                </a>
+            </nav>
+        </header>
 
-        <article class="content px-4">
+        <!-- Page Body -->
+        <div class="p-4">
             @Body
-        </article>
-    </main>
+        </div>
+    </div>
 </div>
+
+@code {
+    private async Task ToggleSidebar()
+    {
+        await JS.InvokeVoidAsync("eval", "document.getElementById('sidebar').classList.toggle('show')");
+    }
+}

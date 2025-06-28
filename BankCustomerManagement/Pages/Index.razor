@@ -1,23 +1,91 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Dashboard</PageTitle>
 
 <div class="hero-section animate__animated animate__fadeIn">
-    <h1 class="display-5 fw-bold mb-3">Welcome to the Bank Customers Management App</h1>
-    <p class="lead text-muted mb-4">
-        A streamlined system to view, add, and manage bank customer records with ease and efficiency.
-    </p>
-    <NavLink class="btn vibrant-btn btn-lg" href="users">
-    Manage Customers
-    <i class="bi bi-arrow-right ms-2"></i>
-</NavLink>
+    <div class="card shadow-sm border-0 text-center">
+        <div class="card-body p-5">
+            <i class="bi bi-bank2 hero-icon mb-3" aria-label="Bank icon"></i>
+            <h1 class="display-5 fw-bold mb-3">Bank Customer Management Dashboard</h1>
+            <p class="lead text-muted mb-4">
+                A streamlined system to view, add, and manage bank customer records with ease and efficiency.
+            </p>
+            <NavLink class="btn btn-primary btn-lg" href="users">
+                Manage Customers
+                <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i>
+            </NavLink>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-grid mt-5">
+    <div class="card dashboard-card shadow-sm animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-people-fill dashboard-icon me-3" aria-label="Customers icon"></i>
+                <div>
+                    <h5 class="card-title mb-1">Total Customers</h5>
+                    <p class="card-text fw-bold fs-4">1,234</p>
+                    <NavLink class="btn quick-action-btn btn-outline-primary" href="/users">View Customers</NavLink>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card dashboard-card shadow-sm animate__animated animate__fadeInUp animate__delay-2s">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-clock-history dashboard-icon me-3" aria-label="Activity icon"></i>
+                <div>
+                    <h5 class="card-title mb-1">Recent Activity</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="text-muted small">• New customer added: John Doe</li>
+                        <li class="text-muted small">• Updated profile: Jane Smith</li>
+                        <li class="text-muted small">• Document uploaded: ID_1234.pdf</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card dashboard-card shadow-sm animate__animated animate__fadeInUp animate__delay-3s">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-wallet2 dashboard-icon me-3" aria-label="Accounts icon"></i>
+                <div>
+                    <h5 class="card-title mb-1">Account Summary</h5>
+                    <p class="card-text fw-bold fs-4">$12.5M</p>
+                    <p class="text-muted small mb-0">Total accounts managed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card dashboard-card shadow-sm animate__animated animate__fadeInUp animate__delay-4s">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-lightning-fill dashboard-icon me-3" aria-label="Actions icon"></i>
+                <div>
+                    <h5 class="card-title mb-1">Quick Actions</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <NavLink class="btn quick-action-btn btn-outline-primary" href="/users">Customers</NavLink>
+                        <NavLink class="btn quick-action-btn btn-outline-primary" href="/reports">Reports</NavLink>
+                        <NavLink class="btn quick-action-btn btn-outline-primary" href="/settings">Settings</NavLink>
+                        <NavLink class="btn quick-action-btn btn-outline-primary" href="/support">Support</NavLink>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="card info-card shadow-sm mt-5 animate__animated animate__fadeInUp">
     <div class="card-body">
-        <h5 class="card-title">About This App</h5>
-        <p class="card-text">
-            This application allows you to seamlessly manage customer information across multiple modules such as personal details, address, banking, and company profiles — all in one place.
-        </p>
+        <div class="d-flex align-items-center">
+            <i class="bi bi-info-circle dashboard-icon me-3" aria-label="Info icon"></i>
+            <div>
+                <h5 class="card-title">About This App</h5>
+                <p class="card-text">
+                    This application allows you to seamlessly manage customer information across multiple modules such as personal details, address, banking, and company profiles — all in one place.
+                </p>
+            </div>
+        </div>
     </div>
 </div>
