@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BankCustomerManagement",
   "resources": {
-    "hash": "sha256-ac1tYIWoOTswROkSljLqjDr4EYlkXZJRcyty+PSnmuw=",
+    "hash": "sha256-WSc8rcfu60BUqf50Iyn/0uRRIYxqz7a/Ar+/XhjXorw=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.m7gi11kh2l.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Forms.b9oz3e4uh6.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
@@ -22,7 +22,7 @@
       "System.Collections.Immutable.m37jrhw1vg.wasm": "System.Collections.Immutable.wasm",
       "System.Collections.NonGeneric.8xsay2675q.wasm": "System.Collections.NonGeneric.wasm",
       "System.Collections.Specialized.3os5dkabg5.wasm": "System.Collections.Specialized.wasm",
-      "System.Collections.0p55qr9uwh.wasm": "System.Collections.wasm",
+      "System.Collections.mcvir43nfn.wasm": "System.Collections.wasm",
       "System.ComponentModel.Primitives.4ovb2tq4jb.wasm": "System.ComponentModel.Primitives.wasm",
       "System.ComponentModel.TypeConverter.ldnvl9b13t.wasm": "System.ComponentModel.TypeConverter.wasm",
       "System.ComponentModel.ek5njsetz3.wasm": "System.ComponentModel.wasm",
@@ -39,13 +39,13 @@
       "System.Private.Uri.57ib06zjwq.wasm": "System.Private.Uri.wasm",
       "System.Runtime.InteropServices.JavaScript.4wymnd9fjf.wasm": "System.Runtime.InteropServices.JavaScript.wasm",
       "System.Runtime.Serialization.Primitives.qznoixqk0h.wasm": "System.Runtime.Serialization.Primitives.wasm",
-      "System.Runtime.65qjur5mki.wasm": "System.Runtime.wasm",
+      "System.Runtime.ddneeb40k7.wasm": "System.Runtime.wasm",
       "System.Text.Encodings.Web.j8jbnca1on.wasm": "System.Text.Encodings.Web.wasm",
       "System.Text.Json.6z1cnxshc5.wasm": "System.Text.Json.wasm",
       "System.Text.RegularExpressions.3zydt3n8n9.wasm": "System.Text.RegularExpressions.wasm",
       "System.cunp5qiwjj.wasm": "System.wasm",
       "System.Private.CoreLib.ntvmpkxo95.wasm": "System.Private.CoreLib.wasm",
-      "BankCustomerManagement.zg0o6jk7ru.wasm": "BankCustomerManagement.wasm",
+      "BankCustomerManagement.y0mjt9i4d5.wasm": "BankCustomerManagement.wasm",
       "dotnet.native.qqumt3dtyr.js": "dotnet.native.js",
       "dotnet.native.sua81lnms4.wasm": "dotnet.native.wasm",
       "dotnet.js": "dotnet.js",
@@ -92,7 +92,7 @@
       "System.Collections.Immutable.m37jrhw1vg.wasm": "sha256-ssmlzMcnkSEc4zgPTHivrXxkVsF9/hFowbGpy6zqX60=",
       "System.Collections.NonGeneric.8xsay2675q.wasm": "sha256-7HqP+PZ+qCsLJbjbeyfqP2HRlyqLlCMCwyKT97mwdk4=",
       "System.Collections.Specialized.3os5dkabg5.wasm": "sha256-Y31t9kiOSOI3wtdQfcNh3EF4GDNY+0llSLu2htbg7r4=",
-      "System.Collections.0p55qr9uwh.wasm": "sha256-FGLU3MmIyaQC6ewQvDsze3w7b4EBpn5dbGU+WQdVaC8=",
+      "System.Collections.mcvir43nfn.wasm": "sha256-NupLrC/olJFJ6VhebB5npwqt7PSz97tHyKxYYtAVzvE=",
       "System.ComponentModel.Primitives.4ovb2tq4jb.wasm": "sha256-FOv/SttnY34BXRCOcrY+4J9Q29Es9H0wS5wXwhjKP+Q=",
       "System.ComponentModel.TypeConverter.ldnvl9b13t.wasm": "sha256-GXFLATozGpdhJMRGqfP21zic5Hsv/N7AEWSJBf30Q3E=",
       "System.ComponentModel.ek5njsetz3.wasm": "sha256-7n7ghIpXsa9b0B2ogCKFeKszbubZfTop3s6xAVOqZ9I=",
@@ -108,12 +108,12 @@
       "System.ObjectModel.qtptmqpubq.wasm": "sha256-/rXUzqlHPqEhnzNyisIb9kesOINuRJooQRfQ77EBIuI=",
       "System.Private.Uri.57ib06zjwq.wasm": "sha256-4fg9jqhIb9lyikbzCgx0RLZ7zZBFhDBvo5IoM4+hXYA=",
       "System.Runtime.Serialization.Primitives.qznoixqk0h.wasm": "sha256-ilopIfz9cTL0O6KEEioZ5FAXxCRp5QiGP4z5igxUGG8=",
-      "System.Runtime.65qjur5mki.wasm": "sha256-GgXfPLnDdokdt+5BuQI1m/XgahX7MwQJr1Rvpp78L4k=",
+      "System.Runtime.ddneeb40k7.wasm": "sha256-0Yei/feRVSAFyr1/0uBXcdXYVO9hxs7aIxhw7EGnKS0=",
       "System.Text.Encodings.Web.j8jbnca1on.wasm": "sha256-3cJRUrFjSoiaGlI3OmHNndawtN8Y5lEgLHYI76jlAvo=",
       "System.Text.Json.6z1cnxshc5.wasm": "sha256-/s8iyjwtcj3C5wi6QAiKvSZK7keJUGR6MtCeCRCEt/k=",
       "System.Text.RegularExpressions.3zydt3n8n9.wasm": "sha256-sXTH9c57ccmOHrE+Bpsiewg0xWGtHrbl8KBKpTJW9VA=",
       "System.cunp5qiwjj.wasm": "sha256-DM5iEENhrifGKn33Y7cqRzxC0OtHXYOKO13icwIazj8=",
-      "BankCustomerManagement.zg0o6jk7ru.wasm": "sha256-nfVmw3FbHrD2aS5pCG9qiDGsX2ixiocrYDQ5nqnGn/8="
+      "BankCustomerManagement.y0mjt9i4d5.wasm": "sha256-Qhe+JrAefUADmet0Rf2IJxepYPfNigOk6guc3NfgLtE="
     }
   },
   "cacheBootResources": true,
